@@ -9,7 +9,7 @@ const products = [
         'category':'Processor',
         'price': 129.99,
         'countInStock': 10,
-        'rating': 4.7,
+        'rating': 4.5,
         'numReviews': 12,
         
     },
@@ -23,7 +23,7 @@ const products = [
         'category':'Keyboard',
         'price': 39.99,
         'countInStock': 39,
-        'rating': 3.8,
+        'rating': 3.5,
         'numReviews': 7,
         
     },
@@ -37,7 +37,7 @@ const products = [
         'category':'Mouse',
         'price': 9.99,
         'countInStock': 41,
-        'rating': 4.3,
+        'rating': 4.5,
         'numReviews': 21,
         
     },
@@ -51,7 +51,7 @@ const products = [
         'category':'Graphic Card',
         'price': 199.99,
         'countInStock': 8,
-        'rating': 4.9,
+        'rating': 5.0,
         'numReviews': 27,
         
     },
@@ -65,7 +65,7 @@ const products = [
         'category':'Motherboard',
         'price': 79.99,
         'countInStock': 24,
-        'rating': 4.2,
+        'rating': 4.0,
         'numReviews': 12,
         
     },
