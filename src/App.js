@@ -4,19 +4,24 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 
 import HomeScreen from './screens/HomeScreen'
+import ProductScreen from './screens/ProductScreen'
+
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+
 
 function App() {
   return (
-    <div>
+    <Router>
       <Header />
       <main className="py-4">
         <Container>
           <h1> Welcome </h1>
-          <HomeScreen />
+          <Route path="/" component={HomeScreen} exact/>
+          <Route path="/product/:id" component={ProductScreen}/>
         </Container>
       </main>
       <Footer />
-    </div>
+    </Router>
   );
 }
 

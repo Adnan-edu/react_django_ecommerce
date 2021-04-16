@@ -50,7 +50,7 @@ const products = [
         'brand':'XFX',
         'category':'Graphic Card',
         'price': 199.99,
-        'countInStock': 8,
+        'countInStock': 0,
         'rating': 5.0,
         'numReviews': 27,
         
