@@ -3,13 +3,18 @@ from django.contrib.auth.models import User
 
 
 class Product(models.Model):
+    """
+    Includes all the detail of the product item. the product item is connected with user.
+    """
+
+
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200, null=True, blank=True)
-    # image =
+    image = models.ImageField(null=True, blank=True)
     brand = models.CharField(max_length=200, null=True, blank=True)
     category = models.CharField(max_length=200, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    raing = models.DecimalField(max_digits=7, decimal_places=2)
+    rating = models.IntegerField(null=True, blank=True, default=0)
     numReviews = models.IntegerField(null=True, blank=True, default=0)
     price = models.DecimalField(max_digits=7, decimal_places=2)
     countInStock = models.IntegerField(null=True, blank=True, default=0)

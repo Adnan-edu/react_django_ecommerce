@@ -6,6 +6,10 @@ from rest_framework.response import Response
 
 from .products import products
 
+from .serializers import ProductSerializer
+
+from .models import Product
+
 
 @api_view(['GET'])
 def getRoutes(request):
@@ -29,16 +33,13 @@ def getRoutes(request):
 
 @api_view(['GET'])
 def getProducts(request):
-    return Response(products)
+    products = Product.objects.all()
+    serializers = ProductSerializer(products, many=True)
+    return Response(serializers.data)
 
 
 @api_view(['GET'])
 def getProduct(request, pk):
-    single_product = None
-
-    for i in products:
-        if str(pk) == i['_id']:
-            single_product = i
-            break
-
-    return Response(single_product)
+    product = Product.objects.get(_id=pk)
+    serializer = ProductSerializer(product, many=False)
+    return Response(serializer.data)
