@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
 import {
   Row,
@@ -10,10 +11,21 @@ import {
   ListGroupItem,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
-import products from "../products";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
+import { listProductDetails } from '../actions/productActions'
 
 function ProductScreen({ match }) {
-  const product = products.find((p) => p._id === match.params.id);
+
+  const dispatch = useDispatch()
+  const productDetails = useSelector(state => state.productDetails)
+  const { loading, error, product } = productDetails
+
+  useEffect(() => {
+
+      dispatch(listProductDetails(match.params.id))
+
+  }, [dispatch, match] ) 
 
   let stockStatus = false;
 
@@ -26,8 +38,12 @@ function ProductScreen({ match }) {
       <Link to="/" className="btn btn-light my-3">
         Go Back
       </Link>
-
-      <Row>
+       {loading ?
+        <Loader/>
+        : error
+        ? <Message variant='danger'>{error}</Message>
+        : (
+          <Row>
         <Col md={6}>
           <Image src={product.image} alt={product.name} fluid />
         </Col>
@@ -84,6 +100,8 @@ function ProductScreen({ match }) {
           </Card>
         </Col>
       </Row>
+        )
+       }
     </div>
   );
 }

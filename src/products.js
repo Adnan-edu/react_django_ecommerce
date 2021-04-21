@@ -2,7 +2,7 @@ const products = [
     {
         '_id': '1',
         'name': 'Intel i5 10400f',
-        'image': 'images/10400f.jpg',
+        'image': '/images/10400f.jpg',
         'description':
             'The Intel Core i5-10400F is a mid-range processor for desktops with six cores based on the Comet Lake architecture',
         'brand':'Intel',
@@ -16,7 +16,7 @@ const products = [
     {
         '_id': '2',
         'name': 'Gamdias Hermes M1',
-        'image': 'images/hermesm1.jpg',
+        'image': '/images/hermesm1.jpg',
         'description':
             'HERMES M1 gives brilliant backlight illumination with Neon light spectrum for up to 7 colors, programmable G-keys with onboard storage, multimedia controls, and anti-ghosting with 21-key rollover on USB for fast, accurate gameplay.',
         'brand':'Gamdias',
@@ -30,7 +30,7 @@ const products = [
     {
         '_id': '3',
         'name': 'Gigabyte Aorus M2',
-        'image': 'images/aorusm2.jpg',
+        'image': '/images/aorusm2.jpg',
         'description':
             'AORUS M2 boasts an enthusiast-grade 6200 dpi optical sensor (Pixart 3327), capable of 220 ips and 30G acceleration, that gives you the ultimate accuracy for competitive gaming.',
         'brand':'Gigabyte',
@@ -44,7 +44,7 @@ const products = [
     {
         '_id': '4',
         'name': 'XFX RX 570 8GB',
-        'image': 'images/rx570.jpg',
+        'image': '/images/rx570.jpg',
         'description':
             'The RX 570 RS 8GB XXX edition is a factory overclocked card that uses 8GB of high-speed GDDR5 memory to keep the card from being handicapped.',
         'brand':'XFX',
@@ -58,7 +58,7 @@ const products = [
     {
         '_id': '5',
         'name': 'Biostar HM410',
-        'image': 'images/hm410.jpg',
+        'image': '/images/hm410.jpg',
         'description':
             'Starting with the higher-specification of the two new H410 models from Biostar, the H410MHG includes TPM technology which adds hardware-based security functionality designed for cryptographic operations.',
         'brand':'Biostar',
@@ -72,7 +72,7 @@ const products = [
     {
         '_id': '6',
         'name': 'Anker Soundcore Q10 Life',
-        'image': 'images/q10life.png',
+        'image': '/images/q10life.png',
         'description':
             'Anker Soundcore Life Q10 Wireless Bluetooth Headphones, Over Ear and Foldable, Hi-Res Certified Sound, 60-Hour Playtime and Fast USB-C Charging, Deep Bass.',
         'brand':'Anker',
