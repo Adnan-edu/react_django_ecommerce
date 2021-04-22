@@ -9,13 +9,16 @@ import {
   Button,
   Card,
   ListGroupItem,
+  Form,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listProductDetails } from '../actions/productActions'
 
-function ProductScreen({ match }) {
+function ProductScreen({ match, history }) {
+
+  const [qty, setQty] = useState(1)
 
   const dispatch = useDispatch()
   const productDetails = useSelector(state => state.productDetails)
@@ -26,6 +29,10 @@ function ProductScreen({ match }) {
       dispatch(listProductDetails(match.params.id))
 
   }, [dispatch, match] ) 
+
+  const addToCartHandler = () => {
+    history.push(`/cart/${match.params.id}?qty=${qty}`)
+  }
 
   let stockStatus = false;
 
@@ -85,8 +92,28 @@ function ProductScreen({ match }) {
                 </Row>
               </ListGroupItem>
 
+              {product.countInStock > 0 && (
+                <ListGroupItem>
+                  <Row>
+                    <Col className='ml-2'>Qty</Col>
+                    <Col xs='auto'>
+                      <Form.Control as='select' value={qty} onChange={(e) => setQty(e.target.value)}>
+                      {
+                        [...Array(product.countInStock).keys()].map((x) => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))
+                      }
+                      </Form.Control>
+                    </Col>
+                  </Row>
+                  </ListGroupItem>
+              )}
+
               <ListGroupItem>
                 <Button
+                  onClick={addToCartHandler}
                   className="btn-block"
                   disabled={stockStatus == false}
                   type="button"
