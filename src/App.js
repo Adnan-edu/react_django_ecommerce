@@ -10,6 +10,8 @@ import CartScreen from './screens/CartScreen'
 
 import LoginScreen from './screens/LoginScreen'
 
+import RegisterScreen from './screens/RegisterScreen'
+
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
@@ -19,9 +21,10 @@ function App() {
       <Header />
       <main className="py-4">
         <Container>
-          <h1> Welcome </h1>
+          <h1> Computer Shop </h1>
           <Route path="/" component={HomeScreen} exact/>
           <Route path="/login" component={LoginScreen} exact/>
+          <Route path="/register" component={RegisterScreen} exact/>
           <Route path="/product/:id" component={ProductScreen}/>
           <Route path="/cart/:id?" component={CartScreen}/>
         </Container>

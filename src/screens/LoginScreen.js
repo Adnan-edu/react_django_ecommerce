@@ -36,6 +36,7 @@ function LoginScreen({location, history}) {
             {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader/>}
             <Form onSubmit={submitHandler}>
+                
                 <Form.Group controlID='email'>
                     <Form.Label>Email Address</Form.Label>
                     <Form.Control 
