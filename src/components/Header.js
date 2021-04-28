@@ -28,7 +28,7 @@ function Header() {
             <Nav className="mr-auto">
               <LinkContainer to="/cart">
                 <Nav.Link>
-                  <i className="fas fa-shopping-cart"></i>Cart
+                  <i className="fas fa-shopping-cart"></i>  Cart
                 </Nav.Link>
               </LinkContainer>
 
@@ -42,10 +42,28 @@ function Header() {
               ): (
                 <LinkContainer to="/login">
                 <Nav.Link>
-                  <i className="fas fa-user"></i>Login
+                  <i className="fas fa-user"></i>  Sign In
                 </Nav.Link>
               </LinkContainer>
               ) }
+
+                {userInfo && userInfo.is_staff && (
+                  <NavDropdown title='Admin' id='adminmenue'>
+                  <LinkContainer to='/admin/userlist'>
+                    <NavDropdown.Item>Users</NavDropdown.Item>
+                  </LinkContainer>
+
+                  <LinkContainer to='/admin/productlist'>
+                    <NavDropdown.Item>Products</NavDropdown.Item>
+                  </LinkContainer>
+
+                  <LinkContainer to='/admin/orderlist'>
+                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                  </LinkContainer>
+
+                </NavDropdown>
+                )}
+
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -21,6 +21,7 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen'
 import OrderScreen from './screens/OrderScreen'
 
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import UserListScreen from './screens/UserListScreen'
 
 
 function App() {
@@ -40,6 +41,8 @@ function App() {
           <Route path="/product/:id" component={ProductScreen}/>
           <Route path="/cart/:id?" component={CartScreen}/>
           <Route path="/shipping" component={ShippingScreen} exact/>
+
+          <Route path="/admin/userlist" component={UserListScreen} exact/>
         </Container>
       </main>
       <Footer />
