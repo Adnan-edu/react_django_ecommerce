@@ -89,7 +89,7 @@ function ProductEditScreen({ match, history }) {
             const { data } = await axios.post('/api/products/upload/', formData, config)
 
 
-           
+            setImage(data)
             setUploading(false)
 
         } catch (error) {
@@ -148,7 +148,14 @@ function ProductEditScreen({ match, history }) {
                                 >
                                 </Form.Control>
 
-                                
+                                <Form.File
+                                    id='image-file'
+                                    label='Choose File'
+                                    custom
+                                    onChange={uploadFileHandler}
+                                >
+
+                                </Form.File>
                                 {uploading && <Loader />}
 
                             </Form.Group>
