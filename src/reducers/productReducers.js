@@ -1,8 +1,9 @@
-import { PRODUCT_LIST_REQUST, 
-    PRODUCT_LIST_SUCCESS, 
+import {
+    PRODUCT_LIST_REQUEST,
+    PRODUCT_LIST_SUCCESS,
     PRODUCT_LIST_FAIL,
-    
-    PRODUCT_DETAILS_REQUST,
+
+    PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL,
 
@@ -24,40 +25,48 @@ import { PRODUCT_LIST_REQUST,
     PRODUCT_CREATE_REVIEW_SUCCESS,
     PRODUCT_CREATE_REVIEW_FAIL,
     PRODUCT_CREATE_REVIEW_RESET,
- } from '../constants/productConstants'
+} from '../constants/productConstants'
 
 
-export const productListReducer = (state = {products: []}, action) => {
-    switch(action.type) {
-        case PRODUCT_LIST_REQUST:
-            return {loading:true, products:[]}
+export const productListReducer = (state = { products: [] }, action) => {
+    switch (action.type) {
+        case PRODUCT_LIST_REQUEST:
+            return { loading: true, products: [] }
 
         case PRODUCT_LIST_SUCCESS:
-            return {loading:false, products: action.payload}
-        
+            return {
+                loading: false,
+                products: action.payload.products,
+                page: action.payload.page,
+                pages: action.payload.pages
+            }
+
         case PRODUCT_LIST_FAIL:
-            return {loading:false, error: action.payload}
-        
+            return { loading: false, error: action.payload }
+
         default:
             return state
     }
 }
 
-export const productDetailsReducer = (state = {product: {reviews:[]}}, action) => {
-    switch(action.type) {
-        case PRODUCT_DETAILS_REQUST:
-            return {loading:true, ...state}
+
+
+export const productDetailsReducer = (state = { product: { reviews: [] } }, action) => {
+    switch (action.type) {
+        case PRODUCT_DETAILS_REQUEST:
+            return { loading: true, ...state }
 
         case PRODUCT_DETAILS_SUCCESS:
-            return {loading:false, product: action.payload}
-        
+            return { loading: false, product: action.payload }
+
         case PRODUCT_DETAILS_FAIL:
-            return {loading:false, error: action.payload}
-        
+            return { loading: false, error: action.payload }
+
         default:
             return state
     }
 }
+
 
 export const productDeleteReducer = (state = {}, action) => {
     switch (action.type) {
@@ -74,6 +83,8 @@ export const productDeleteReducer = (state = {}, action) => {
             return state
     }
 }
+
+
 
 export const productCreateReducer = (state = {}, action) => {
     switch (action.type) {
@@ -94,6 +105,7 @@ export const productCreateReducer = (state = {}, action) => {
     }
 }
 
+
 export const productUpdateReducer = (state = { product: {} }, action) => {
     switch (action.type) {
         case PRODUCT_UPDATE_REQUEST:
@@ -113,6 +125,8 @@ export const productUpdateReducer = (state = { product: {} }, action) => {
     }
 }
 
+
+
 export const productReviewCreateReducer = (state = {}, action) => {
     switch (action.type) {
         case PRODUCT_CREATE_REVIEW_REQUEST:
@@ -131,3 +145,4 @@ export const productReviewCreateReducer = (state = {}, action) => {
             return state
     }
 }
+
