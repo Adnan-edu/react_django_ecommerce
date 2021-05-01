@@ -26,22 +26,23 @@ import { PRODUCT_LIST_REQUST,
 
  } from '../constants/productConstants'
 
-export const listProducts = () => async (dispatch) => {
-    try{
-        dispatch({type: PRODUCT_LIST_REQUST})
+ export const listProducts = (keyword = '') => async (dispatch) => {
+    try {
+        dispatch({ type: PRODUCT_LIST_REQUST })
 
-        const {data} = await axios.get('/api/products/')
- 
+        const { data } = await axios.get(`/api/products${keyword}`)
+
         dispatch({
-            type:PRODUCT_LIST_SUCCESS,
-            payload: data 
+            type: PRODUCT_LIST_SUCCESS,
+            payload: data
         })
-    }catch(error) {
+
+    } catch (error) {
         dispatch({
-            type:PRODUCT_LIST_FAIL,
-            payload:error.response && error.response.data.detail
-            ? error.response.data.detail
-            : error.message,
+            type: PRODUCT_LIST_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
         })
     }
 }
