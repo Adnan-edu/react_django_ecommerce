@@ -1,0 +1,7 @@
+{   "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.pythonPath": "/Volumes/Importants/Projects/virtualenvs/djangoenv/bin/python",
+    "python.autoComplete.addBrackets": true,
+    "python.linting.maxNumberOfProblems": 1000,
+    "python.linting.pylintEnabled": true,
+}
