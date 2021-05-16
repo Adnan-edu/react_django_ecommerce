@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-3t1vv89b7!(#*-xfxi)j#85sxg_ol816*-4dwuhs^c*r$=vpu4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'proshop-adnan.herokuapp.com']
 
 
 # Application definition
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     
     'rest_framework',
     'corsheaders',
-
+    'storages',
     'base.apps.BaseConfig',
 ]
 
@@ -84,7 +84,7 @@ SIMPLE_JWT = {
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -122,8 +122,12 @@ WSGI_APPLICATION = 'django_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres@proshop',
+        'PASSWORD': os.environ.get('DB_PASS'),
+        'HOST': 'proshop.postgres.database.azure.com',
+        'PORT': '5432'
     }
 }
 
@@ -173,12 +177,26 @@ STATICFILES_DIRS = [
     BASE_DIR / 'react_frontend/build/static'
 ]
 
-MEDIA_ROOT = 'static/images'
+MEDIA_ROOT = BASE_DIR / 'static/images'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+
+AWS_STORAGE_BUCKET_NAME = 'proshop-bucket-django'
+
+AWS_QUERYSTRING_AUTH = False
+
+if os.getcwd() == '/app':
+    DEBUG = False
